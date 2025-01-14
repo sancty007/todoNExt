@@ -6,10 +6,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useDispatch } from "react-redux";
-import { addTask } from "@/app/store/store";
+import { addTask } from "../app/store/store";
 
+type newTasks = {
+  id: number;
+  title: string;
+  description: string;
+};
 export function NewTaskForm() {
   const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -19,14 +25,13 @@ export function NewTaskForm() {
     e.preventDefault();
 
     // Créer une nouvelle tâche avec un ID unique
-    const newTask = {
+    const newTask: newTasks = {
       id: Date.now(), // Simple ID unique basé sur le timestamp
       title: formData.title,
       description: formData.description,
-      isSelected: false,
     };
 
-    // Dispatcher l'action pour ajouter la tâche
+    // dispatch les donnees
     dispatch(addTask(newTask));
 
     // Réinitialiser le formulaire

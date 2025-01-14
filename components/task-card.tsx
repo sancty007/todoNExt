@@ -24,7 +24,6 @@ export function TaskCard({
         id,
         title,
         description,
-        isSelected: !isSelected,
       })
     );
   };

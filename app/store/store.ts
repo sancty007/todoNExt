@@ -6,7 +6,6 @@ interface Task {
   id: number;
   title: string;
   description: string;
-  isSelected: boolean;
 }
 
 interface User {
@@ -44,7 +43,18 @@ const authSlice = createSlice({
 // Slice pour les tâches
 const tasksSlice = createSlice({
   name: "tasks",
-  initialState: [] as Task[],
+  initialState: [
+    {
+      id: 1,
+      title: "nouvelle task",
+      description: "description de la task",
+    },
+    {
+      id: 2,
+      title: "nouvelle task",
+      description: "description de la task",
+    },
+  ] as Task[],
   reducers: {
     setTasks: (state, action: PayloadAction<Task[]>) => {
       return action.payload;

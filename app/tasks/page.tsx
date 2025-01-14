@@ -11,7 +11,7 @@ export default function TaskManagement() {
   );
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex-1 md:flex">
       {/* Left Panel */}
       <div className="w-[300px] bg-[#1B4D4B] p-4 flex flex-col">
         <NewTaskForm />

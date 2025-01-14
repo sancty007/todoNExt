@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // Vérifier le mot de passe (simple comparaison pour l'exemple)
+    // Vérifier le mot de passe
     if (user.passwords !== password) {
       return NextResponse.json(
         { error: "Email ou mot de passe incorrect" },
