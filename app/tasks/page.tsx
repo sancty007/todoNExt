@@ -13,7 +13,7 @@ export default function TaskManagement() {
   return (
     <div className="min-h-screen flex-1 md:flex">
       {/* Left Panel */}
-      <div className="w-[300px] bg-[#1B4D4B] p-4 flex flex-col">
+      <div className="md:w-[300px] bg-[#1B4D4B] p-4 flex flex-col gap-4">
         <NewTaskForm />
         <div className="mt-auto pb-4 text-white/60 text-sm">
           © Nanocreatives
@@ -39,7 +39,7 @@ export default function TaskManagement() {
                   key={task.id}
                   title={task.title}
                   description={task.description}
-                  isSelected={false} // Assuming isSelected is not needed in this context
+                  isSelected={false}
                   id={task.id}
                 />
               )

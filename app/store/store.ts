@@ -46,12 +46,17 @@ const tasksSlice = createSlice({
   initialState: [
     {
       id: 1,
-      title: "nouvelle task",
+      title: "nouvelle task-1 ",
       description: "description de la task",
     },
     {
       id: 2,
-      title: "nouvelle task",
+      title: "nouvelle task-2",
+      description: "description de la task",
+    },
+    {
+      id: 3,
+      title: "nouvelle task-3",
       description: "description de la task",
     },
   ] as Task[],

@@ -49,7 +49,7 @@ export function NewTaskForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <label htmlFor="title" className="text-sm">
-              Titre<span className="">*</span>
+              Titre<span className="text-[#1B4D4B]">*</span>
             </label>
             <Input
               id="title"
@@ -64,7 +64,7 @@ export function NewTaskForm() {
 
           <div className="space-y-2">
             <label htmlFor="description" className="text-sm">
-              Description<span className="">*</span>
+              Description<span className="text-[#1B4D4B]">*</span>
             </label>
             <Textarea
               id="description"
@@ -77,7 +77,7 @@ export function NewTaskForm() {
               }
               required
               placeholder="Description"
-              className="min-h-[100px]"
+              className="min-h-[100px] resize-none"
             />
           </div>
 
