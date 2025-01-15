@@ -1,14 +1,15 @@
 "use client";
 
 import { useSelector } from "react-redux";
-import { TaskCard } from "../../components/task-card";
+//import { TaskCard } from "../../components/task-card";
 import { NewTaskForm } from "@/components/new-task-form";
+import { LogoutButton } from "@/components/logout-button";
 
 export default function TaskManagement() {
-  const tasks = useSelector(
+  /* const tasks = useSelector(
     (state: { tasks: [{ title: string; description: string; id: number }] }) =>
       state.tasks
-  );
+  ); */
 
   return (
     <div className="min-h-screen flex-1 md:flex">
@@ -18,6 +19,7 @@ export default function TaskManagement() {
         <div className="mt-auto pb-4 text-white/60 text-sm">
           © Nanocreatives
         </div>
+        <LogoutButton />
       </div>
 
       {/* Main Content */}
@@ -33,7 +35,7 @@ export default function TaskManagement() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {tasks.map(
+            {/* {tasks.map(
               (task: { title: string; description: string; id: number }) => (
                 <TaskCard
                   key={task.id}
@@ -43,7 +45,7 @@ export default function TaskManagement() {
                   id={task.id}
                 />
               )
-            )}
+            )} */}
           </div>
         </div>
       </div>

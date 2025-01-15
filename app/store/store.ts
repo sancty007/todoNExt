@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 // Définition des types
+
 interface Task {
   id: number;
   title: string;
@@ -19,6 +20,7 @@ interface AuthState {
 }
 
 // Slice pour l'authentification
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -43,23 +45,7 @@ const authSlice = createSlice({
 // Slice pour les tâches
 const tasksSlice = createSlice({
   name: "tasks",
-  initialState: [
-    {
-      id: 1,
-      title: "nouvelle task-1 ",
-      description: "description de la task",
-    },
-    {
-      id: 2,
-      title: "nouvelle task-2",
-      description: "description de la task",
-    },
-    {
-      id: 3,
-      title: "nouvelle task-3",
-      description: "description de la task",
-    },
-  ] as Task[],
+  initialState: [] as Task[],
   reducers: {
     setTasks: (state, action: PayloadAction<Task[]>) => {
       return action.payload;
@@ -84,8 +70,8 @@ export const { setTasks, addTask, deleteTask, updateTask } = tasksSlice.actions;
 
 export const store = configureStore({
   reducer: {
-    auth: authSlice.reducer,
     tasks: tasksSlice.reducer,
+    auth: authSlice.reducer,
   },
 });
 

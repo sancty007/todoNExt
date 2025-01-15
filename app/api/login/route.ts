@@ -2,10 +2,11 @@
 
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
+import { cookies } from "next/headers";
 
 export async function POST(request: Request) {
   try {
-    const { email, password } = await request.json();
+    const { email } = await request.json();
 
     // Vérifier si l'utilisateur existe
     const user = await prisma.user.findUnique({
@@ -22,21 +23,28 @@ export async function POST(request: Request) {
       );
     }
 
-    // Vérifier le mot de passe
-    if (user.passwords !== password) {
-      return NextResponse.json(
-        { error: "Email ou mot de passe incorrect" },
-        { status: 401 }
-      );
-    }
+    const token = `token_${Date.now()}`;
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { passwords, ...userWithoutPassword } = user;
-
-    return NextResponse.json({
-      user: userWithoutPassword,
-      token: `token_${Date.now()}`,
+    // Créer la réponse
+    const response = NextResponse.json({
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+      token,
     });
+
+    // Définir le cookie
+    (await cookies()).set({
+      name: "auth_token",
+      value: token,
+      httpOnly: true,
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return response;
   } catch (error) {
     console.error("Erreur de connexion:", error);
     return NextResponse.json(

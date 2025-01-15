@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { useDispatch } from "react-redux";
 import { addTask } from "../app/store/store";
 
@@ -26,7 +26,7 @@ export function NewTaskForm() {
 
     // Créer une nouvelle tâche avec un ID unique
     const newTask: newTasks = {
-      id: Date.now(), // Simple ID unique basé sur le timestamp
+      id: Date.now(), // ID unique basé sur le timestamp
       title: formData.title,
       description: formData.description,
     };
@@ -44,7 +44,9 @@ export function NewTaskForm() {
   return (
     <Card className="w-full">
       <CardContent className="pt-6 px-6 pb-8">
-        <h2 className="text-xl font-medium mb-6">Nouvelle Tâche</h2>
+        <CardTitle className="text-xl font-medium mb-6">
+          Nouvelle Tâche
+        </CardTitle>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">

@@ -28,11 +28,8 @@ export default function LoginForm() {
       const res = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
+        body: JSON.stringify(formData),
+        credentials: "include",
       });
 
       const data = await res.json();
@@ -49,12 +46,9 @@ export default function LoginForm() {
           token: data.token,
         })
       );
-
-      // Redirection vers la page des tâches
-      router.push("/tasks");
-    } catch (error) {
+      router.refresh();
+    } catch {
       setError("Une erreur est survenue lors de la connexion");
-      console.error("Erreur lors de la connexion:", error);
     } finally {
       setIsLoading(false);
     }
